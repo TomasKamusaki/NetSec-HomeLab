@@ -2941,7 +2941,7 @@ Splunk on Pi still needs fixes — will revisit after phishing chain.
 
 
 ## Day 46 - MITM Practice
-December 11 2025 
+December 11, 2025 
 
 During this session, I practiced a Man-in-the-Middle (MITM) attack inside my fully offline home lab using only my own machines and an isolated network. The goal was not exploitation, but understanding how MITM activity looks from a detection and investigation perspective.
 
@@ -2977,4 +2977,65 @@ I simulated ARP-based MITM traffic between a victim host and the network gateway
 
 <img width="1913" height="1071" alt="mitm" src="https://github.com/user-attachments/assets/e6a0f95e-7c56-4125-94e5-45ee3b478ff5" />
 <img width="1915" height="1046" alt="ph" src="https://github.com/user-attachments/assets/ea5bd2bb-89a7-4080-b9a0-2e68c3a2168d" />
+
+### Day 47 - Attack Chain 1
+Date: December 14, 2025
+
+I completed a full six-phase attack chain simulation in my SOC home lab, starting from initial access and ending with data exfiltration. The chain began with a phishing-style delivery where the victim downloaded a file over HTTP, which maps to MITRE ATT&CK T1566 (Phishing) and was visible in network traffic. After delivery, the payload was executed on the victim system, corresponding to T1059 (Command and Scripting Interpreter), although visibility at this stage was limited due to the lack of endpoint telemetry.
+
+Following execution, the compromised host established a reverse shell back to the attacker on TCP port 4444, representing command-and-control activity mapped to T1071 (Application Layer Protocol). After gaining interactive access, I implemented persistence using a cron job on the victim host, which aligns with T1053.003 (Scheduled Task / Cron) and resulted in automated execution without user interaction. Once persistence was established, the host began periodic HTTP beaconing, generating repeated outbound HTTP requests that clearly demonstrated low-noise C2 behavior and mapped to T1071.001 (Web Protocols).
+
+In the final phase, I exfiltrated data from the victim to the attacker over TCP port 5555 using netcat, which maps to T1041 (Exfiltration Over C2 Channel) and was confirmed through Splunk and network metadata. After completing the chain, I removed the cron persistence and verified that all recurring activity stopped. This session helped me practice executing, detecting, and documenting a complete end-to-end attack chain while applying accurate MITRE ATT&CK mappings to each phase.
+
+<img width="3838" height="1070" alt="ph6" src="https://github.com/user-attachments/assets/8c2ae002-562f-49e2-81f3-fe173f2a56f1" />
+<img width="3842" height="1048" alt="ph5" src="https://github.com/user-attachments/assets/acdd91aa-9c71-463a-84d5-f204d386385e" />
+<img width="3842" height="1077" alt="ph4" src="https://github.com/user-attachments/assets/d12d6ffb-1ecd-4dc3-8507-2c006b24f5e7" />
+<img width="3836" height="1079" alt="ph3" src="https://github.com/user-attachments/assets/9520f7f5-50ca-4164-8930-d77808fc63a5" />
+<img width="5760" height="1080" alt="1ph" src="https://github.com/user-attachments/assets/fa8e1f5f-f0ba-476e-b681-c0c5af7f19ae" />
+
+### Day 48 - Attack Chain 2
+Date: December 15, 2025
+
+Yesterday I completed a full SSH-based attack chain in my SOC home lab, starting from reconnaissance and ending with data exfiltration. The chain began with network reconnaissance against the victim host, where scanning activity was observed and mapped to MITRE ATT&CK T1046 (Network Service Discovery). After identifying SSH as an exposed service, I performed an automated SSH brute-force attack using Hydra, which generated a high volume of authentication attempts and maps to T1110 (Brute Force).
+
+Following the brute-force phase, valid credentials were successfully obtained and used to authenticate to the victim system over SSH, corresponding to T1078 (Valid Accounts). After successful authentication, I observed post-authentication activity over an encrypted SSH session, where command execution was inferred based on session duration and traffic behavior, mapping to T1021.004 (Remote Services: SSH).
+
+During the post-compromise phase, the compromised host generated additional outbound traffic, including DNS-related activity, which was investigated and classified as benign system behavior rather than attacker-driven communication. This helped reinforce the importance of validating events before mapping them to malicious techniques. In the final phase of the chain, data was exfiltrated from the victim to the attacker over a non-standard TCP port (5555) using netcat, which maps to T1041 (Exfiltration Over C2 Channel) and was clearly confirmed through Splunk and Zeek connection metadata.
+
+Overall, this session allowed me to practice detecting an SSH-based intrusion end to end, correlating reconnaissance, credential access, valid login, post-authentication behavior, and exfiltration across Wireshark, Zeek, and Splunk. It also highlighted the challenges of working with encrypted traffic and reinforced the value of timing, metadata, and cross-tool correlation when reconstructing real attack chains.
+
+### Day 49 - AA (Automated Attack) Chains & Detection Validation
+Date: December 17, 2025
+
+Automated Attack Chains & Detection Validation
+
+Today I focused on automation, attack chaining, and detection validation inside my offline SOC home lab.
+
+I successfully designed and executed two fully automated attack chains from the attacker (Kali) to the victim (Ubuntu), covering multiple phases of a realistic intrusion lifecycle. Each chain was built to generate both host-based and network-based telemetry for analysis in Splunk, Zeek, Wireshark, and audit logs.
+
+### Key Achievements
+- Built Chain 1 simulating execution, C2-style communication, HTTP beaconing, persistence (cron), and data exfiltration over TCP
+- Built Chain 2 simulating SSH reconnaissance, brute force activity (Hydra), valid access via SSH key authentication, post-authentication actions, and data exfiltration
+- Automated both chains with reusable Bash scripts to ensure repeatable detections
+- Captured full PCAPs using Raspberry Pi with port mirroring enabled
+- Verified network indicators in Wireshark (SYN scans, HTTP beaconing, C2/exfil traffic)
+- Verified host-level indicators in Splunk (auth.log, auditd, cron activity, SSH events)
+- Mapped attack behavior to MITRE ATT&CK techniques (Brute Force, Valid Accounts, Application Layer Protocol, Exfiltration Over C2 Channel, Scheduled Tasks)
+- Validated that telemetry aligns correctly across network + host + SIEM layers
+
+### Outcome
+This session significantly improved my understanding of:
+- How attack phases connect together in real workflows
+- How automated attacks generate consistent, detectable patterns
+- How defenders correlate logs, PCAPs, and timelines to reconstruct an intrusion
+
+Both chains are now fully reproducible, providing a strong foundation for:
+- Detection engineering
+- Alert tuning
+- SOC analyst investigation practice
+
+<img width="3834" height="1070" alt="autochain" src="https://github.com/user-attachments/assets/74dcd384-433f-4308-8830-6545e37fe8bb" />
+<img width="3834" height="1073" alt="autocaptchain1" src="https://github.com/user-attachments/assets/81dbb901-499c-48d1-bf35-4b36a9c78bbe" />
+<img width="5760" height="1080" alt="autochain2" src="https://github.com/user-attachments/assets/bc404a76-f73e-4516-ad98-ca03b203ca6e" />
+<img width="5760" height="1080" alt="automation" src="https://github.com/user-attachments/assets/7e36bdcf-6087-4c0a-aaca-ee8ff7a93732" />
 
