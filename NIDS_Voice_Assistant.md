@@ -127,23 +127,20 @@ Each rule will be added, tested, and documented individually to maintain system 
 
 ## Day 2 
 
-## 🔎 SOC Restaurant – Detection Engine Progress (Session Summary)
+## SOC Restaurant – Detection Engine Progress (Session Summary)
 
 Today I significantly advanced my offline SOC lab by transforming it into a functional mini NIDS built on Zeek logs and a custom Python correlation engine.
 
-### What I Built
+## What I Built
 
-- Fresh-start monitoring mode – Script now ignores old Zeek logs and begins detection only from launch time.
--onclusion — Phase 1: Stable De– Identifies new IPs in the monitored subnet that are not part of the baseline.
--nclusion — Phase 1: Stabl– Detects multiple destination ports targeted within a short time window.
--
+Fresh-start monitoring mode – Script now ignores old Zeek logs and begins detection only from launch time.
+Identifies new IPs in the monitored subnet that are not part of the baseline.
+Detects multiple destination ports targeted within a short time window.
 
- Conclusion — Phase 1: Stable – Correlates repeated connection attempts to port 22 and triggers an alert when thresholds are exceeded.
- Detection Pipeline – Every alert now includes precise time context.
- 
- Phase 1 Conclusion
 
-✅ Con– Inactive devices are removed from tracking after defined inactivity.
+Conclusion — Phase 1: Stable – Correlates repeated connection attempts to port 22 and triggers an alert when thresholds are exceeded.
+Detection Pipeline – Every alert now includes precise time context.
+Inactive devices are removed from tracking after defined inactivity.
 
 
 ### Validation Testing
@@ -161,6 +158,9 @@ The system now performs:
 - Log parsing from Zeek conn.log
 - Practical red team vs blue team simulation inside an isolated lab
 
-This is no longer just log monitoring — it is an operational prototype of a lightweight network intrusion detection system.
-
 Next phase: detection tuning, false-positive reduction, and potential MITRE ATT&CK mapping.
+
+![photo_2026-02-19_00-45-14](https://github.com/user-attachments/assets/bea13edd-ba15-408c-899c-446c0dd51f65)
+![photo_2026-02-19_00-45-18](https://github.com/user-attachments/assets/aeff2dcf-8e7a-4fd2-8f5c-3ec31ff1d216)
+![photo_2026-02-19_00-48-54](https://github.com/user-attachments/assets/159a5ff5-6bc3-4a07-af1a-05099f06922e)
+
