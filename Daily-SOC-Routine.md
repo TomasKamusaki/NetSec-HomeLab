@@ -1,5 +1,3 @@
-# Home-lab (step by step)
-
 ## 🏗️ Lab Overview
 📘 This lab is for educational and ethical testing only, performed on my own isolated network.
 
