@@ -1,1 +1,166 @@
+# NIDS Voice Assistant – Project Introduction. I called this Project "SOCRestaurant"
 
+## Overview
+This project is an experimental Network Intrusion Detection System (NIDS) voice assistant built inside my home SOC lab.
+
+The goal is to combine network monitoring, detection logic, and simple voice interaction to simulate how a SOC analyst could receive alerts in real time without constantly watching dashboards.
+
+The assistant listens to network events, detects suspicious activity, and announces alerts using voice output.
+
+This project is part of my hands-on training toward SOC Analyst / IT Security roles.
+
+## Lab Environment
+
+The assistant runs inside my isolated SOC home lab:
+
+- OPNsense firewall with VLAN segmentation
+- Proxmox host with Windows and Linux VMs
+- Kali attacker VM for simulations
+- Ubuntu victim machines
+- Raspberry Pi packet capture sensor
+- Splunk Enterprise for log analysis
+- Zeek / tcpdump for network telemetry
+
+All systems are offline from the Internet unless manually connected for updates.
+
+This allows safe attack simulation and detection testing.
+
+## Project Goal
+
+The main goals of this project are:
+
+• Learn how NIDS detection logic works  
+• Practice log parsing and alerting pipelines  
+• Connect detection events to human-readable notifications  
+• Simulate real SOC alert workflows  
+• Improve Python scripting skills  
+
+This is not meant to replace real NIDS tools like Zeek or Suricata.  
+It is a learning project focused on detection engineering fundamentals.
+
+## How It Works
+
+1. Network traffic is captured using Zeek or tcpdump.
+2. Logs are monitored by a Python script.
+3. Detection rules identify events like:
+   - Port scans
+   - Brute force attempts
+   - Suspicious connections
+4. Alerts are sent to Splunk and spoken by a voice assistant.
+
+Example voice alert:
+
+"Warning. Possible brute-force attack detected from 192.168.1.125 targeting port 22."
+
+## Skills Demonstrated
+
+• Network traffic analysis  
+• Basic detection engineering  
+• Python scripting  
+• Log parsing  
+• SOC workflow simulation  
+• MITRE ATT&CK mapping (planned next phase)  
+
+## Why This Project Matters
+
+Most SOC learning is theoretical.  
+This project forces me to build detection pipelines end-to-end:
+
+Network → Logs → Detection → Alert → Analyst response.
+
+It helped me understand real SOC challenges like false positives, tuning rules, and monitoring multiple VLAN networks.
+
+## Future Improvements
+
+• Add Wazuh integration  
+• Map alerts to MITRE ATT&CK  
+• Add alert severity scoring  
+• Integrate email / Slack notifications  
+• Improve voice interaction commands  
+
+This project is part of my ongoing journey from beginner to SOC Analyst.
+All experiments are documented in my NetSec-HomeLab repository.
+
+## Let's Rock 
+## Day 1
+
+# Phase 1: Stable Detection Pipeline Established
+
+During this phase of the SOCrestaurant project, the primary objective was to establish a stable, end-to-end detection pipeline rather than prematurely optimizing detection logic.
+
+What was achieved
+ • Successfully deployed Zeek as a passive network sensor and validated correct traffic visibility by selecting the appropriate listening interface.
+ • Built a custom Python-based alerting engine capable of consuming Zeek conn.log telemetry in real time.
+ • Integrated local text-to-speech alerts, enabling immediate, human-readable notifications when network activity is observed.
+ • Verified the solution in both online (home network) and offline lab environments, confirming that detection depends on traffic flow and sensor placement rather than internet access.
+ • Demonstrated reliable detection of network activity, including the appearance of new hosts, confirming correct ingestion and processing of Zeek logs.
+
+Engineering decision
+
+After experimenting with more advanced filtering and baseline logic, the system was intentionally rolled back to a known-good script that reliably alerts on all observed activity.
+
+This decision was made to:
+ • preserve a stable and reproducible baseline,
+ • avoid introducing multiple changes simultaneously, and
+ • ensure that future alert rules are added incrementally and safely, following real SOC change-management practices.
+
+The current version prioritizes correct data ingestion and alert delivery over noise reduction, establishing a solid foundation for controlled rule tuning.
+
+Why this matters
+
+This phase mirrors real-world SOC engineering workflows:
+ • Stability is prioritized before optimization.
+ • Detection logic is tuned only after telemetry reliability is proven.
+ • Rollbacks are treated as a valid and professional decision, not a failure.
+
+By the end of this phase, the project has a working detection and alerting core, which is the most critical prerequisite for any SOC automation or SOAR-style system.
+
+Next steps
+
+The next phase will focus on incremental alert rule development, including:
+ • noise suppression (multicast, broadcast, IPv6),
+ • baseline-based new device detection,
+ • rate-based and behavior-driven alerts.
+
+Each rule will be added, tested, and documented individually to maintain system stability
+
+
+## Day 2 
+
+## 🔎 SOC Restaurant – Detection Engine Progress (Session Summary)
+
+Today I significantly advanced my offline SOC lab by transforming it into a functional mini NIDS built on Zeek logs and a custom Python correlation engine.
+
+### What I Built
+
+- Fresh-start monitoring mode – Script now ignores old Zeek logs and begins detection only from launch time.
+-onclusion — Phase 1: Stable De– Identifies new IPs in the monitored subnet that are not part of the baseline.
+-nclusion — Phase 1: Stabl– Detects multiple destination ports targeted within a short time window.
+-
+
+ Conclusion — Phase 1: Stable – Correlates repeated connection attempts to port 22 and triggers an alert when thresholds are exceeded.
+ Detection Pipeline – Every alert now includes precise time context.
+ 
+ Phase 1 Conclusion
+
+✅ Con– Inactive devices are removed from tracking after defined inactivity.
+
+
+### Validation Testing
+
+Detection logic successfully validated using:
+Port scan alert triggered within ~10–20 seconds.(- nmap -p 1-100)
+Brute force alert triggered within ~1 minute.
+
+### 🎯 Result
+
+The system now performs:
+- Stateful tracking
+- Threshold-based anomaly detection
+- Real-time alerting
+- Log parsing from Zeek conn.log
+- Practical red team vs blue team simulation inside an isolated lab
+
+This is no longer just log monitoring — it is an operational prototype of a lightweight network intrusion detection system.
+
+Next phase: detection tuning, false-positive reduction, and potential MITRE ATT&CK mapping.
