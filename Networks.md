@@ -68,3 +68,6 @@ Lessons learned:
 <img width="1365" height="1257" alt="Screenshot from 2026-02-15 15-38-27" src="https://github.com/user-attachments/assets/ec795374-2176-4c88-a3ee-c6966011920e" />
 <img width="1908" height="1398" alt="Labopn" src="https://github.com/user-attachments/assets/da5916c5-ce6e-40c7-b3f8-e15cd29f4dd7" />
 <img width="1780" height="1304" alt="winruls" src="https://github.com/user-attachments/assets/200acea2-2abc-4f30-a7b0-ada33da35421" />
+<img width="1280" height="960" alt="image" src="https://github.com/user-attachments/assets/83a0be90-91e9-46ff-a7aa-75508efb53d8" />
+<img width="1280" height="960" alt="image" src="https://github.com/user-attachments/assets/149aacce-0971-4264-bf08-987b641c643b" />
+
