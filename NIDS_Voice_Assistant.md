@@ -162,5 +162,4 @@ Next phase: detection tuning, false-positive reduction, and potential MITRE ATT&
 
 ![photo_2026-02-19_00-45-14](https://github.com/user-attachments/assets/bea13edd-ba15-408c-899c-446c0dd51f65)
 ![photo_2026-02-19_00-45-18](https://github.com/user-attachments/assets/aeff2dcf-8e7a-4fd2-8f5c-3ec31ff1d216)
-![photo_2026-02-19_00-48-54](https://github.com/user-attachments/assets/159a5ff5-6bc3-4a07-af1a-05099f06922e)
 
