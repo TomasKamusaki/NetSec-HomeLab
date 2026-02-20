@@ -6,27 +6,42 @@ While searching for my first SOC / IT support role, I was manually checking many
 So I built small Python scripts to automate the process and collect fresh vacancies in one place.
 
 🎯 What this project solves
- - Automatically searches job boards for entry-level IT / SOC roles
- - Focus on Spain (Valencia region) and remote jobs
- - Saves results into CSV files for easy review
+
+ • Automatically searches job boards for entry-level IT / SOC roles
+ 
+ • Focus on Spain (Valencia region) and remote jobs
+
+ • Saves results into CSV files for easy review
+
  • Removes duplicates so I don’t apply twice
+
  • Helps track job opportunities during my cybersecurity learning journey
 
 🛠️ Tools & Skills Used
+ 
  • Python (requests, BeautifulSoup)
+ 
  • API usage (Adzuna)
+ 
  • Web scraping basics
+ 
  • CSV data handling
+
  • Automation mindset for real-life problems
 
 📂 Scripts Included
+ 
  • job_search.py → Spain + Valencia jobs
+
  • remote_jobs.py → Remote job search
+ 
  • weworkremotely_jobs.py → Remote jobs from WeWorkRemotely
 
 Each script saves results into a CSV file.
 
+
 📈 Result
+
 
 This project saves time, improves consistency in job searching, and shows practical Python + automation skills relevant to SOC and IT work.
 
