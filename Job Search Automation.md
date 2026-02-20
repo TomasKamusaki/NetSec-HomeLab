@@ -6,9 +6,9 @@ While searching for my first SOC / IT support role, I was manually checking many
 So I built small Python scripts to automate the process and collect fresh vacancies in one place.
 
 🎯 What this project solves
- • Automatically searches job boards for entry-level IT / SOC roles
- • Focus on Spain (Valencia region) and remote jobs
- • Saves results into CSV files for easy review
+ - Automatically searches job boards for entry-level IT / SOC roles
+ - Focus on Spain (Valencia region) and remote jobs
+ - Saves results into CSV files for easy review
  • Removes duplicates so I don’t apply twice
  • Helps track job opportunities during my cybersecurity learning journey
 
