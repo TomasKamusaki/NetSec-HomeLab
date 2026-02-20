@@ -39,4 +39,4 @@ This project saves time, improves consistency in job searching, and shows practi
 
 <img width="1177" height="1285" alt="Screenshot from 2026-02-20 14-51-13" src="https://github.com/user-attachments/assets/56aa2a8e-3d29-4ecd-88e9-93014e67616c" />
 <img width="1848" height="1320" alt="jobsearch" src="https://github.com/user-attachments/assets/9b400fdf-d78f-48a7-a591-50d50c2f912c" />
-<img width="1504" height="839" alt="josbscript" src="https://github.com/user-attachments/assets/ca3d63f9-4bad-4a3f-84ea-3a0443ca9f5b" />
+<img width="1542" height="850" alt="scrip1" src="https://github.com/user-attachments/assets/e28a90a8-04e6-43a9-8af9-7534c13340ae" />
