@@ -23,8 +23,6 @@ So I built small Python scripts to automate the process and collect fresh vacanc
  
  • API usage (Adzuna)
  
- • Web scraping basics
- 
  • CSV data handling
 
  • Automation mindset for real-life problems
