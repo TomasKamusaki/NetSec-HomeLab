@@ -71,3 +71,46 @@ Lessons learned:
 <img width="1280" height="960" alt="image" src="https://github.com/user-attachments/assets/83a0be90-91e9-46ff-a7aa-75508efb53d8" />
 <img width="1280" height="960" alt="image" src="https://github.com/user-attachments/assets/149aacce-0971-4264-bf08-987b641c643b" />
 
+## Part 3
+
+## Lab Progress – Network Segmentation & Firewall Hardening
+
+Today I implemented full VLAN segmentation in my SOC home lab and validated firewall enforcement using O﻿PNsense.
+
+### What Was Done
+- Created network segmentation with:
+  - VLAN10 – Management / Host / Splunk
+  - VLAN20 – Servers (Proxmox, NAS, Sensors)
+  - VLAN30 – Attacker (Kali)
+  - VLAN40 – Infrastructure (AP, old switch)
+  - VLAN50 – Victims (Ubuntu, Windows)
+- Built firewall rules based on least privilege:
+  - VLAN30 → only VLAN50 for attack simulations
+  - VLAN20 → only VLAN10 for management
+  - VLAN10 → limited admin ports (22, 80, 443, 3389, WinRM, Proxmox 8006)
+  - ICMP allowed from management only
+- Tested rule effectiveness using:
+  - SSH / Netcat connections
+  - Port blocking validation in OPNsense logs
+  - Firewall Live View analysis
+- Verified segmentation works correctly when ports are removed or added.
+
+### Result
+My lab now behaves like a real enterprise network:
+- Lateral movement is controlled
+- Attack traffic can be simulated safely
+- Firewall logs provide strong telemetry for Splunk + Zeek + Python NIDS analysis
+
+### Next Steps
+- Add DNS/NTP controlled access rules
+- Enable full firewall logging for SIEM correlation
+- Deploy Wazuh agents for endpoint telemetry
+- Map attack simulations to MITRE ATT&CK techniques
+
+This step completes the network isolation foundation for realistic SOC detection and penetration-testing practice.
+
+<img width="1844" height="1070" alt="firewallsett" src="https://github.com/user-attachments/assets/bdbfd387-02c8-43e6-a354-7d70338cd417" />
+<img width="1878" height="1241" alt="firewall" src="https://github.com/user-attachments/assets/0790aa9d-d2cf-4fcd-bafd-857ca2f3e7f2" />
+<img width="1814" height="1160" alt="port4444" src="https://github.com/user-attachments/assets/b0aed505-f220-4afc-b8d7-1f4b8f9a5088" />
+<img width="1280" height="960" alt="image" src="https://github.com/user-attachments/assets/cf93b4df-4bda-40d6-88ee-c8411a2820f0" />
+
