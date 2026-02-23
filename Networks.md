@@ -105,9 +105,7 @@ My lab now behaves like a real enterprise network:
 - Add DNS/NTP controlled access rules
 - Enable full firewall logging for SIEM correlation
 - Deploy Wazuh agents for endpoint telemetry
-- Map attack simulations to MITRE ATT&CK techniques
 
-This step completes the network isolation foundation for realistic SOC detection and penetration-testing practice.
 
 <img width="1844" height="1070" alt="firewallsett" src="https://github.com/user-attachments/assets/bdbfd387-02c8-43e6-a354-7d70338cd417" />
 <img width="1878" height="1241" alt="firewall" src="https://github.com/user-attachments/assets/0790aa9d-d2cf-4fcd-bafd-857ca2f3e7f2" />
