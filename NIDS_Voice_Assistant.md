@@ -200,4 +200,3 @@ Today’s milestone confirms my SOCrestaurant project can automatically detect a
 <img width="1893" height="1362" alt="Screenshot from 2026-02-24 15-51-36" src="https://github.com/user-attachments/assets/f94fda44-8dcd-4121-bcfb-2cba785a81b9" />
 <img width="1881" height="1417" alt="jira2" src="https://github.com/user-attachments/assets/262f6244-288a-4c23-bab2-364a595bd2aa" />
 <img width="1850" height="1099" alt="jiraint" src="https://github.com/user-attachments/assets/a9502d24-5896-4674-a3a6-aa3299d39bb4" />
-<img width="1909" height="1430" alt="jira" src="https://github.com/user-attachments/assets/23cd6497-6fb0-4fe0-99fd-0ac39029cf34" />
