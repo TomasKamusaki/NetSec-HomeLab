@@ -199,3 +199,27 @@ Today’s milestone confirms my SOCrestaurant project can automatically detect a
 
 <img width="1893" height="1362" alt="Screenshot from 2026-02-24 15-51-36" src="https://github.com/user-attachments/assets/f94fda44-8dcd-4121-bcfb-2cba785a81b9" />
 <img width="1850" height="1099" alt="jiraint" src="https://github.com/user-attachments/assets/a9502d24-5896-4674-a3a6-aa3299d39bb4" />
+
+## Day 4
+
+Today I stabilized the core telemetry pipeline in my offline SOC home lab and confirmed end-to-end detection is working.
+
+• Fixed Zeek → Splunk ingestion issues and validated correct parsing of conn.log with proper field extraction (id.orig_h / id.resp_h → src_ip / dest_ip).  
+• Updated my SOC detection script to support Zeek JSON logs and restored detection logic.  
+• Confirmed automated alerts for port scans, ICMP sweeps, brute-force attempts, and unknown devices.  
+• Integrated automatic Jira ticket creation with priority handling and baseline whitelist logic.  
+• Tuned trusted IP baseline so alerts now focus only on attacker/victim machines.  
+• Verified firewall ports required for Splunk forwarding and Zeek telemetry.
+
+This session produced a stable detection pipeline:
+
+Zeek sensor → Splunk SIEM → Python detection engine → Jira ticketing.
+
+Next steps:  
+• Add Wazuh endpoint telemetry  
+• Map detections to MITRE ATT&CK  
+• Tune detection thresholds and reduce false positives
+<img width="1813" height="1431" alt="jiraprior" src="https://github.com/user-attachments/assets/7821d040-eb91-4f93-922d-6dd4591c8cb0" />
+<img width="2528" height="1313" alt="jira26" src="https://github.com/user-attachments/assets/e6c2b278-3421-4727-8f40-b3d5ed5abaec" />
+<img width="1893" height="1362" alt="Screenshot from 2026-02-24 15-51-36" src="https://github.com/user-attachments/assets/a9550dd9-335d-4e5b-a589-5e7874cd4bae" />
+
